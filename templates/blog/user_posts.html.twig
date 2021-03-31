@@ -1,0 +1,29 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}{{user.fullname}} POSTS{% endblock %}
+
+{% block body %}
+
+ <div class="col-sm-7 mt-4 mx-4">
+    {% for post in posts %}
+<div class="row post mb-1">
+                        <div class="col-12">
+                                <h2 class="text-capitalize text-dark">{{post.title}}</h2>
+                                <p class="added">{{post.user.fullname}}{{post.time|date("F jS \\a\\t g:ia") }}</p>
+                                <p class="lh-1">{{post.body[:100]~'...'}}</p>
+                                <a href="{{path('blogshow',{'id':post.id})}}" class="btn btn-default float-left text-capitalize">lire la suite...</a>
+                                <img src="{{asset('images/'~ post.image)}}" class="img-thumbnail" alt="">
+                                
+                        </div>
+                </div>
+                {% endfor %}
+        </div>
+         <div class="col-sm-4 container col-12">
+         <div class="row post mt-4">
+         <h3 class="mt-1 text-capitalize">{{user.username}}</h3>
+         <hr>
+         <h3 class="mt-1 text-capitalize">{{user.fullname}}</h3>
+         </div>
+         </div>       
+{% endblock %}

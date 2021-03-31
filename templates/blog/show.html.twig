@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}WILDREAM{% endblock %}
+
+{% block body %}
+        <div class="col-sm-7 mt-4 mx-4">
+                <div class="row post mb-1">
+                        <div class="col-12">
+                                <h2 class="text-capitalize text-dark">{{post.title}}</h2>
+                                <p class="added"><a href="#" class="username">{{post.user.fullname}}</a> {{post.time|date("F jS \\a\\t g:ia") }}</p>
+                                <p>{{post.body}}</p>
+                                <br>
+                                <img src="{{asset('images/'~ post.image)}}" class="img-thumbnail" alt="">
+                        </div>
+                </div>
+                <div class="row post mb-1">
+                        <div class="col-12">
+                                <h2 class="text-capitalize text-dark">Commentaires <span class="badge badge-dark">0</span></h2>
+                                <hr>
+                               {# {% if is_granted('ROLE_USER') %}#}
+                                        <form action="{{path('comment_add')}}" method="post"></form>
+                                        <div class="form-group">
+                                                <textarea name="body" id="body" placeholder="Ajouter votre commentaire"cols="30" rows="10" class="form-control"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                                <button type="submit" class="btn btn-success">Commenter</button>
+                                        </div>
+                                        <input type="hidden" name="_csrf_token" value="{{csrf_token('authentificate')}}">
+                                        <input type="hidden" name="post_id" value="{{post.id}}">
+                               {#} {% else %}
+                                       {# <a href="{{path('security_login')}}" class="btn btn-link">Connectez-vous pour commenter</a>#}
+
+                                {# {% endif %}#}
+                        </div>
+                </div>
+        </div>
+         <div class="col-sm-4 container col-12">
+              {{include('include/sidebar.html.twig',{'latests':latests})}}
+         </div>       
+{% endblock %}

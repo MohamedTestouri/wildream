@@ -1,0 +1,88 @@
+body{
+    font-family: 'Roboto',sans-serif;
+    background-color: #d4d4d4;
+}
+div.logo h2{
+    color: #9b599b;
+    font-size: 2.5rem;
+    font-weight: 700;
+    padding: 20px;
+}
+ul.socials{
+  list-style: none;  
+}
+ul.socials li{
+    display: inline-block;
+    background-color: #9b599b;
+    border : 2px solid #fff;
+    border-radius: 5px;
+    padding: 5px;
+}
+ul.socials li a{
+    color:#fff !important;
+}
+img.mainlogo{
+    width: 16%;
+    height: 16%;
+}
+nav .nav-item {
+    text-align: center;
+}
+nav .nav-item:hover{
+    
+}
+.footer{
+    padding-top: 50px;
+}
+footer{
+    color: #fff;
+    height: 60px;
+    font-family: 'Roboto',sans-serif;
+    border-top: 1px solid #198754;
+    border-bottom: 1px solid #198754;
+}
+footer ul{
+    list-style: none;
+}
+footer ul li{
+    display: inline-block;
+    margin-right: 15px;
+}
+footer ul li a{
+    font-size: 1.1em;
+    text-decoration: none;
+    color: white;
+}
+footer ul li:first-child{
+    font-size: 1.1em;
+    text-decoration: none;
+    color: white;
+    font-weight: 700;
+}
+div.post,
+.post{
+    background-color: #fff;
+    padding: 15px;
+    border: 1px solid #fff ;
+    border-radius: 5px;
+}
+div.h2{
+    
+}
+a.username{
+    text-decoration: none;
+    color:grey;
+}
+.username:hover{
+    color: #198754;
+}
+div .added{
+    color: #d4d4d4;
+    width: 70%;
+    padding-top: 2px;
+
+}
+.btn-default{
+    color:#d4d4d4;
+    font-size:14px;
+}
