@@ -28,9 +28,7 @@ class PostType extends AbstractType
                 'label'=>false
                 ]
             )
-            ->add('image',FileType::class,[
-                'label'=>false
-            ])
+            ->add('image',FileType::class,array('data_class' => null))
             ->add('submit',submitType::class)
         ;
     }

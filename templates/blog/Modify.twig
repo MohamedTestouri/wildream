@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}WILDREAM{% endblock %}
+
+{% block body %}
+
+<div class="wrapper wrapper--w900">
+                
+            <div class="card-6">
+                <div class="card-heading">
+                    <h2 class="title dark">Modifier une publication</h2>
+                </div>
+                <div class="card-body">
+                    {{ form_start(formpost) }}
+                        {{ form_errors(formpost) }}
+                        <div class="form-row">
+                                <div class="name">Votre Titre</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    {{ form_row(formpost.title,{'attr':{'class':'form-control','placeholder':'Votre Titre'}}) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Que voulez-vous dire</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    {{ form_row(formpost.body,{'attr':{'class':'textarea--style-6','placeholder':'Que voulez-vous dire?'}}) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Photo</div>
+                            <div class="value">
+                                <div class="input-group js-input-file">
+                                    {{ form_row(formpost.image,{'attr':{'class':''}}) }}
+                                </div>
+                                <div class="label--desc">Upload your Joint file or any other relevant file. Max file size 50 MB</div>
+                            </div>
+                        </div>
+                </div>
+                <div class="card-footer">
+                    <!--<button class="btn btn--radius-2 btn--blue-2" type="submit">Publier</button>-->
+                    {{ form_row(formpost.submit,{'attr':{'class':'btn btn-success'}}) }}
+                    <!--<button class="btn btn--radius-2 btn--blue-2" type="Cancel">Cancel</button>-->
+                </div>
+            </div>
+        </div>
+    </div>
+                {{ form_end(formpost) }} 
+
+{% endblock %}

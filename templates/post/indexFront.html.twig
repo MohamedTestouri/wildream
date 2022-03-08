@@ -1,0 +1,45 @@
+{% extends 'front.html.twig' %}
+{% block body %}
+    <!-- start blog section -->
+    <section class="hero-blog">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-sm-12 col-xs-12">
+                    <div class="blog-main-section">
+                        {% for post in posts %}
+                        <div class="blog-card">
+                            <div class="blog-box-img"><a href="../../../multipage_4/multipage_4/blog-details.html"><img src="{{asset('front/assets/img/inner-page/blog-img-1.png')}}" alt="{{ post.image }}" class="img-fluid"></a>
+                                <div class="blog-overlay"></div>
+                            </div>
+                            <div class="blog-box-content">
+                                <p>
+                                <div class="date_box">
+                                    <span><i class="fa fa-clock-o" aria-hidden="true"></i></span>
+                                    <a href="#">{{ post.time ? post.time|date('Y-m-d H:i:s') : '' }}</a>
+                                </div>
+                                <div class="admin_box">
+                                    <span><i class="fa fa-user" aria-hidden="true"></i></span><a href="#">User: {{ post.userId }}</a>
+                                </div>
+                                </p>
+                                <h2><a href="../../../multipage_4/multipage_4/blog-details.html">{{ post.title }}</a></h2>
+                                <p>{{ post.body }}</p>
+                                <div class="blog-card-link"> <a href="{{ path('post_show_front', {'id': post.id}) }}">Read More <span><i class="fa fa-angle-right" aria-hidden="true"></i></span></a> </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+
+                        <a href="{{ path('post_new') }}">create a post</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-12 col-xs-12">
+                    <div class="blog-categories">
+                        <h2>Trier</h2>
+                        <p><a href="{{ path('post_index') }}"><span class="tag-1">Most recent</span></a></p>
+                        <p><a href="{{ path('post_index_orderTitle') }}"><span class="tag-1">Order By Title</span></a></p>
+                        <p><a href="{{ path('post_index_orderBody') }}"><span class="tag-1">Order By Body</span></a></p>
+                    </div>
+                </div>
+                </div>
+        </div>
+    </section>
+{% endblock %}

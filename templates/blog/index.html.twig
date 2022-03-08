@@ -13,9 +13,10 @@
                 <div class="card-heading">
                     <h2 class="title dark">Créer une publication</h2>
                 </div>
+                {{ form_start(formpost) }}
+                {{ form_errors(formpost) }}
                 <div class="card-body">
-                    {{ form_start(formpost) }}
-                        {{ form_errors(formpost) }}
+
                         <div class="form-row">
                                 <div class="name">Votre Titre</div>
                             <div class="value">
@@ -47,19 +48,20 @@
                     {{ form_row(formpost.submit,{'attr':{'class':'btn btn-success'}}) }}
                     <!--<button class="btn btn--radius-2 btn--blue-2" type="Cancel">Cancel</button>-->
                 </div>
+                {{ form_end(formpost) }}
             </div>
         </div>
     </div>
-                {{ form_end(formpost) }}  
+
         </div>
                 {% for post in posts %}
                 <div class="row post mb-1">
                         <div class="col-12">
                                 <h2 class="text-capitalize text-dark">{{post.title}}</h2>
-                                <p class="added"><a href="{{path('user_posts',{'username':post.user.username})}}" class="username">{{post.user.fullname}}</a> {{post.time|date("F jS \\a\\t g:ia") }}</p>
+                                <p class="added"><a href="{{path('user_posts',{'username':post.username})}}" class="username">{{post.username}}</a> {{post.time|date("F jS \\a\\t g:ia") }}</p>
                                 <p class="lh-1">{{post.body[:100]~'...'}}</p>
                                 <a href="{{path('blogshow',{'id':post.id})}}" class="btn btn-default float-left text-capitalize">lire la suite...</a>
-                                <img src="{{asset('images/'~ post.image)}}" class="img-thumbnail" alt="">
+                                <img src="{{asset('images/'~post.imageshown)}}" class="img-thumbnail" alt="">
                                 
                         </div>
                 </div>

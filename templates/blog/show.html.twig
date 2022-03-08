@@ -4,13 +4,16 @@
 
 {% block body %}
         <div class="col-sm-7 mt-4 mx-4">
+         <button onclick="location.href='{{path('delete_post',{'id':post.id})}}'" class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete"><i class="fa fa-trash"></i></button>
+         <button onclick="location.href='{{path('modify_post',{'id':post.id})}}'" class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="" data-original-title="Modify"><i class="fa fa-edit"></i></button>
                 <div class="row post mb-1">
+               
                         <div class="col-12">
                                 <h2 class="text-capitalize text-dark">{{post.title}}</h2>
-                                <p class="added"><a href="#" class="username">{{post.user.fullname}}</a> {{post.time|date("F jS \\a\\t g:ia") }}</p>
+                                <p class="added"><a href="#" class="username">{{post.username}}</a> {{post.time|date("F jS \\a\\t g:ia") }}</p>
                                 <p>{{post.body}}</p>
                                 <br>
-                                <img src="{{asset('images/'~ post.image)}}" class="img-thumbnail" alt="">
+                                <img src="{{asset('images/'~ post.imageshown)}}" class="img-thumbnail" alt="">
                         </div>
                 </div>
                 <div class="row post mb-1">
@@ -25,12 +28,18 @@
                                         <div class="form-group">
                                                 <button type="submit" class="btn btn-success">Commenter</button>
                                         </div>
-                                        <input type="hidden" name="_csrf_token" value="{{csrf_token('authentificate')}}">
-                                        <input type="hidden" name="post_id" value="{{post.id}}">
+                                        <input type="hidden" name="_csrf_token" value="">
+                                        <input type="hidden" name="post_id" value="">
                                {#} {% else %}
                                        {# <a href="{{path('security_login')}}" class="btn btn-link">Connectez-vous pour commenter</a>#}
 
                                 {# {% endif %}#}
+                                {#{% for comment in post.comments %}
+                                <div class="media mt-3">
+                                        <span class="comment-userbame">{{comment.user.username}}</span>
+                                </div>
+
+                                {% endfor %}#}
                         </div>
                 </div>
         </div>

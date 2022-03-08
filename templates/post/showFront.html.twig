@@ -1,0 +1,62 @@
+{% extends 'front.html.twig' %}
+{% block body %}
+    <!-- start blog section -->
+<section class="hero-blog">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-sm-12 col-xs-12">
+                <div class="blog-details">
+                    <div class="blog-details-img"> <img src="{{ asset('front/assets/img/inner-page/blog-details-img-1.png')}}" alt="{{ post.image }}" class="img-fluid"> </div>
+                    <div class="blog-details-tag">
+                        <div class="details-tag-1">
+                            <ul>
+                                <li><span><img src="{{ asset('front/assets/img/inner-page/profile.png')}}" alt="Gymfit" class="img-fluid"></span> Type: {{ post.type }}</li>
+                                <li><span><img src="{{ asset('front/assets/img/inner-page/comment.png')}}" alt="Gymfit" class="img-fluid"></span> {{ post.likes }} Likes</li>
+                                <li><span><img src="{{ asset('front/assets/img/inner-page/calendar.png')}}" alt="Gymfit" class="img-fluid"></span> {{ post.time ? post.time|date('Y-m-d H:i:s') : '' }}</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="blog-details-content">
+                        <h2>{{ post.title }}</h2>
+                        <p>{{ post.body }}</p>
+                    </div>
+                    <div class="comment">
+                        <div class="comment-title">
+                            <h2>COMMENTS</h2>
+                        </div>
+    {% for comment in comments %}
+                        <div class="comment-box">
+                            <div class="comment-box-img"> <img src="{{ asset('front/assets/img/inner-page/blog-details-img-3.png') }}" alt="Gymfit" class="img-fluid">
+                                <div class="box-img-bg"></div>
+                            </div>
+                            <div class="comment-box-content">
+                                <div class="comment-box-title">
+                                    <div class="comment-box-header">
+                                        <h2>User ID: {{ comment.userId }}</h2>
+                                        <h5>{{ comment.created ? comment.created|date('Y-m-d H:i:s') : '' }}</h5>
+                                    </div>
+                                </div>
+                                <div class="comment-box-sub-content">
+                                    <p>{{ comment.body }}</p>
+                                </div>
+                            </div>
+                        </div>
+
+
+    {% endfor %}
+                    </div>
+                    <div class="comment-box-form">
+                        <div class="form-title">
+                            <h2>LEAVE COMMENT</h2>
+                        </div>
+                        <form action="#">
+                            <a type="button" class="form-btn" href="{{ path('comment_new', {'id': post.id}) }}">comment</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

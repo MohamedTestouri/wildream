@@ -5,6 +5,8 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use App\Repository\PostRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use phpDocumentor\Reflection\Types\Integer;
 
 /**
  * @ORM\Entity(repositoryClass=PostRepository::class)
@@ -43,11 +45,32 @@ class Post
      * @Assert\File(mimeTypes={"image/jpeg"})
      */
     private $image;
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User",inversedBy="user")
-     */
-    private $user;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $type;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $likes;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $user_id;
+
+    private $comments;
+    private $username;
+    private $imageshown;
+
+    public function __construct()
+    {
+        $this->comments = new ArrayCollection();
+        // may not be needed, see section on salt below
+        // $this->salt = md5(uniqid('', true));
+    }
     public function getId(): ?int
     {
         return $this->id;
@@ -105,20 +128,63 @@ class Post
     {
         return $this->image;
     }
-
     public function setImage(string $image): self
     {
         $this->image = $image;
 
         return $this;
     }
-    
-    public function getUser(){
-        return $this->user;
-    }
-    public function setUser($user): self
+
+    public function getImageshown(): ?string
     {
-        $this->user=$user;
+        return $this->imageshown;
+    }
+    public function setImageshown(string $imageshown): self
+    {
+        $this->imageshown = $imageshown;
+
+        return $this;
+    }
+
+    public function setType(string $type): self
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public function setLikes(Int $likes): self
+    {
+        $this->likes = $likes;
+
+        return $this;
+    }
+    public function getLikes(): ?string
+    {
+        return $this->likes;
+    }
+    
+    public function getUserid(){
+        return $this->user_id;
+    }
+    public function setUserid(Int $user_id): self
+    {
+        $this->user_id=$user_id;
+        return $this;
+    }
+    public function getComments(){
+        return $this->comments;
+    }
+    public function getUsername(){
+        return $this->username;
+    }
+    public function setUsername(String $user): self
+    {
+        $this->username=$user;
         return $this;
     }
 }

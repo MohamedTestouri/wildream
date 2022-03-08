@@ -41,8 +41,7 @@ class User implements UserInterface, \Serializable
     private $fullname;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Post",mappedBy="post")
-     * @ORM\JoinColumn()
+     * @ORM\Column(type="integer")
      */
     private $posts;
 
@@ -51,11 +50,12 @@ class User implements UserInterface, \Serializable
      */
     private $isActive;
 
-    
+    private $comments;
 
     public function __construct()
     {
         $this->posts = new ArrayCollection();
+        $this->comments = new ArrayCollection();
         $this->isActive = true;
         // may not be needed, see section on salt below
         // $this->salt = md5(uniqid('', true));
@@ -71,6 +71,12 @@ class User implements UserInterface, \Serializable
     public function getId(): ?int
     {
         return $this->id;
+    }
+    public function setId(Int $id): self
+    {
+        $this->id = $id;
+
+        return $this;
     }
 
     public function getUsername(): ?string
@@ -122,6 +128,9 @@ class User implements UserInterface, \Serializable
     }
     public function getPosts(){
         return $this->posts;
+    }
+    public function getComments(){
+        return $this->comments;
     }
     public function getRoles()
     {
